@@ -101,16 +101,16 @@ go get github.com/AtomSites/atom-components@latest
 
 ### Setup
 
-1. **Serve the component CSS** — add to `internal/web/server.go` after the existing `e.Static` line:
+1. **Serve the component CSS and JS** — add to `internal/web/server.go` after the existing `e.Static` line:
 
 ```go
-import componentCSS "github.com/AtomSites/atom-components/css"
+import "github.com/AtomSites/atom-components/static"
 
 e.GET("/static/css/atom-components.css", echo.WrapHandler(
-    http.StripPrefix("/static/css/", http.FileServer(http.FS(componentCSS.FS))),
+    http.StripPrefix("/static/", http.FileServer(http.FS(static.Assets))),
 ))
 e.GET("/static/js/atom-components.js", echo.WrapHandler(
-    http.StripPrefix("/static/js/", http.FileServer(http.FS(componentCSS.FS))),
+    http.StripPrefix("/static/", http.FileServer(http.FS(static.Assets))),
 ))
 ```
 
@@ -126,13 +126,14 @@ e.GET("/static/js/atom-components.js", echo.WrapHandler(
 Import and use in any templ file:
 
 ```go
-import ac "github.com/AtomSites/atom-components"
+import "github.com/AtomSites/atom-components/modal"
+import "github.com/AtomSites/atom-components/contact"
 
-@ac.Modal("confirm", "Are you sure?") {
+@modal.Modal("confirm", "Are you sure?") {
     <p>This action cannot be undone.</p>
 }
 
-@ac.ContactForm("/contact", ac.ContactFormData{})
+@contact.ContactForm("/contact", contact.FormData{})
 ```
 
 See the [atom-components README](https://github.com/AtomSites/atom-components) for the full component catalog.
