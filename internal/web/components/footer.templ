@@ -1,0 +1,19 @@
+package components
+
+import "strconv"
+import "time"
+
+templ Footer() {
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-branding">
+				<a href="https://www.atomsites.co.uk" target="_blank" rel="noopener">
+					<img src="/static/assets/powered-by-atom.webp" alt="Powered by Atom" class="footer-logo"/>
+				</a>
+			</div>
+			<div class="footer-bottom">
+				&copy; { strconv.Itoa(time.Now().Year()) } Atom Quickstart
+			</div>
+		</div>
+	</footer>
+}

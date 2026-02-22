@@ -1,0 +1,22 @@
+package pages
+
+import "github.com/AtomSites/atom-quickstart/internal/web/components"
+
+templ aboutPage() {
+	@components.Layout("About", "about", "About this project") {
+		<main class="hero">
+			<div class="container" style="text-align:center;">
+				<h1 class="section-title">About</h1>
+				<p class="section-subtitle">Learn more about the Atom Quickstart template.</p>
+				<div class="content-card">
+					<h2>Built for Speed</h2>
+					<p>
+						Atom Quickstart is a minimal Go web app template using Echo and Templ.
+						It provides hot-reload development, Docker deployment, and a clean
+						glass-inspired design system out of the box.
+					</p>
+				</div>
+			</div>
+		</main>
+	}
+}

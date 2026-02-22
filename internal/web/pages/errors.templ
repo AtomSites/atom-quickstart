@@ -1,0 +1,33 @@
+package pages
+
+import "github.com/AtomSites/atom-quickstart/internal/web/components"
+
+templ notFoundPage() {
+	@components.Layout("Not Found", "", "Page not found") {
+		<main class="hero">
+			<div class="container" style="text-align:center;">
+				<p class="error-code">404</p>
+				<h1 class="section-title">Page Not Found</h1>
+				<p class="section-subtitle">The page you're looking for doesn't exist or has been moved.</p>
+				<div class="error-actions">
+					<a href="/" class="btn-primary">Go Home</a>
+				</div>
+			</div>
+		</main>
+	}
+}
+
+templ serverErrorPage() {
+	@components.Layout("Error", "", "Something went wrong") {
+		<main class="hero">
+			<div class="container" style="text-align:center;">
+				<p class="error-code">500</p>
+				<h1 class="section-title">Something Went Wrong</h1>
+				<p class="section-subtitle">An unexpected error occurred. Please try again later.</p>
+				<div class="error-actions">
+					<a href="/" class="btn-primary">Go Home</a>
+				</div>
+			</div>
+		</main>
+	}
+}

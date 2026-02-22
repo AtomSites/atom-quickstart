@@ -1,0 +1,14 @@
+package pages
+
+import "github.com/AtomSites/atom-quickstart/internal/web/components"
+
+templ homePage() {
+	@components.Layout("Home", "home", "A minimal Go web app template using Echo and Templ") {
+		<main class="hero">
+			<div class="container" style="text-align:center;">
+				<h1 class="section-title">Atom Quickstart Template</h1>
+				<p class="section-subtitle">Edit this page to get started.</p>
+			</div>
+		</main>
+	}
+}

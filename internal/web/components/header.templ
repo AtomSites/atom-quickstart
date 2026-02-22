@@ -1,0 +1,20 @@
+package components
+
+templ Header(activePage string) {
+	<header class="header">
+		<div class="container">
+			<a href="/" class="logo">
+				<span class="logo-text">ATOM <span>QUICKSTART</span></span>
+			</a>
+			<nav class="nav-links" id="navLinks">
+				<a href="/" class={ templ.KV("active", activePage == "home") }>Home</a>
+				<a href="/about" class={ templ.KV("active", activePage == "about") }>About</a>
+			</nav>
+			<button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</header>
+}
