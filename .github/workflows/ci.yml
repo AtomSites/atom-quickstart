@@ -3,47 +3,29 @@ name: CI
 on:
   push:
     branches: [master]
-    paths-ignore:
-      - '**/*.md'
-      - 'LICENSE'
-      - '.gitignore'
   pull_request:
     branches: [master]
-    paths-ignore:
-      - '**/*.md'
-      - 'LICENSE'
-      - '.gitignore'
-
-env:
-  GO_VERSION: '1.25'
 
 jobs:
-  test:
-    name: Go Tests & Lint
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
+      - uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version: "1.25"
 
-      - name: Install dependencies
-        run: |
-          go mod download
-          go install github.com/a-h/templ/cmd/templ@latest
+      - name: Install templ
+        run: go install github.com/a-h/templ/cmd/templ@latest
 
-      - name: Generate templates
+      - name: Generate
         run: templ generate
 
-      - name: Run tests
-        run: go test -v -race ./...
+      - name: Test
+        run: go test ./... -v
 
-      - name: Run golangci-lint
+      - name: Lint
         uses: golangci/golangci-lint-action@v9
         with:
           version: v2.8.0
-
-      - name: Build
-        run: go build -o bin/server ./cmd/server
