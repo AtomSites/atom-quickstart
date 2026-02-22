@@ -17,6 +17,12 @@ make install           # installs Go deps, templ, reflex, golangci-lint
 make dev               # starts dev server with hot reload on http://localhost:3000
 ```
 
+> **Used the "Use this template" button?** If you created your repo via GitHub's template feature, clone it using your repo's name instead. For example, if you named it `shae-testing`:
+> ```bash
+> gh repo clone AtomSites/shae-testing
+> cd shae-testing
+> ```
+
 ## Project Structure
 
 ```
