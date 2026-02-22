@@ -9,8 +9,3 @@ linters:
     - govet
     - staticcheck
     - unused
-
-exclusions:
-  paths:
-    - ".*_templ\\.go$"
-    - vendor
