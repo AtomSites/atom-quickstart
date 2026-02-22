@@ -89,6 +89,54 @@ In `internal/web/components/header.templ`, add inside the `<nav>`:
 <a href="/example" class={ templ.KV("active", activePage == "example") }>Example</a>
 ```
 
+## Using Atom Components
+
+[Atom Components](https://github.com/AtomSites/atom-components) is an optional library of reusable UI components (modals, forms, cards, toasts) that work with the Atom design system.
+
+### Install
+
+```bash
+go get github.com/AtomSites/atom-components@latest
+```
+
+### Setup
+
+1. **Serve the component CSS** — add to `internal/web/server.go` after the existing `e.Static` line:
+
+```go
+import componentCSS "github.com/AtomSites/atom-components/css"
+
+e.GET("/static/css/atom-components.css", echo.WrapHandler(
+    http.StripPrefix("/static/css/", http.FileServer(http.FS(componentCSS.FS))),
+))
+e.GET("/static/js/atom-components.js", echo.WrapHandler(
+    http.StripPrefix("/static/js/", http.FileServer(http.FS(componentCSS.FS))),
+))
+```
+
+2. **Link the stylesheet** — add to `internal/web/components/layout.templ` after the existing CSS link:
+
+```html
+<link rel="stylesheet" href="/static/css/atom-components.css"/>
+<script src="/static/js/atom-components.js" defer></script>
+```
+
+### Usage
+
+Import and use in any templ file:
+
+```go
+import ac "github.com/AtomSites/atom-components"
+
+@ac.Modal("confirm", "Are you sure?") {
+    <p>This action cannot be undone.</p>
+}
+
+@ac.ContactForm("/contact", ac.ContactFormData{})
+```
+
+See the [atom-components README](https://github.com/AtomSites/atom-components) for the full component catalog.
+
 ## Make Targets
 
 | Target         | Description                                    |
