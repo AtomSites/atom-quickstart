@@ -38,7 +38,7 @@ Thumbs.db
 *.log
 
 # Build output
-server
+/server
 
 # Playwright MCP
 .playwright-mcp/
